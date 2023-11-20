@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import ProfileImg from '../images/profile.jpg'
+import React, { useState, useCallback, useEffect, useRef } from 'react'; 
 
 import { RiQuillPenLine } from "react-icons/ri";
 
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection,serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import useAuth from '../custom-hooks/useAuth';
+ 
 
 
 const ref = collection(db, "posts")
@@ -30,7 +30,8 @@ const SendTweet = ({ inputFocused }) => {
     addDoc(ref, {
       body: body,
       photo: user.photoURL,
-      displayName: user.displayName
+      displayName: user.displayName,
+      timestamp: serverTimestamp()
     })
     setBody("")
   }, [body])

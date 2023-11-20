@@ -4,15 +4,17 @@ import { FaRegComment } from "react-icons/fa";
 import { AiOutlineRetweet,AiOutlineHeart } from "react-icons/ai";
  
 import {useCollectionData} from 'react-firebase-hooks/firestore'
-import {collection} from 'firebase/firestore'
+import {collection,query, orderBy} from 'firebase/firestore'
 import {db} from '../firebase'
 
 const ref = collection(db,'posts')
 
+const orderedRef = query(ref, orderBy('timestamp', 'desc'));
+
 const Tweets = () => {
   
 
-  const [data, isLoading] = useCollectionData(ref);
+  const [data, isLoading] = useCollectionData(orderedRef);
 
   if(isLoading){
     return <h1>Loading...</h1>
