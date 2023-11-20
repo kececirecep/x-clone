@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import ProfileImg from '../images/profile.jpg'
 
 import { RiQuillPenLine } from "react-icons/ri";
@@ -10,8 +10,18 @@ import useAuth from '../custom-hooks/useAuth';
 
 const ref = collection(db, "posts")
 
-const SendTweet = () => {
+const SendTweet = ({ inputFocused }) => {
+  
   const user = useAuth();
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputFocused) {
+      inputRef.current.focus();
+    }
+  }, [inputFocused]);
+
 
   const [body, setBody] = useState("");
 
@@ -28,6 +38,7 @@ const SendTweet = () => {
   if (!user) {
     return <div>Yükleniyor...</div>;
   }
+  
 
   return (
     <div>
@@ -35,7 +46,7 @@ const SendTweet = () => {
         <form className="flex">
           <img className="w-12 h-12 rounded-full mr-4" src={user?.photoURL} alt="Profil Resmi" />
           <div className="w-full">
-            <textarea
+            <textarea ref={inputRef}
               className="w-full h-24 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="Neler oluyor?"
               value={body}

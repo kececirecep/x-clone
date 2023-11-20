@@ -16,7 +16,7 @@ import { RiQuillPenLine } from "react-icons/ri";
 import { GiExitDoor } from "react-icons/gi";
  
 
-const Menu = () => {
+const Menu = ({focusInput}) => {
 
     const user = useAuth();
 
@@ -47,7 +47,7 @@ const Menu = () => {
                         <NavLink to="*"><li className='mt-1 py-4 px-4 flex items-center gap-3 font-semibold hover:bg-gray-200 rounded-full p-3'><span className='text-2xl'><RiTwitterXFill /></span><p className='text-lg'>Premium</p></li></NavLink>
                         <NavLink to="*"><li className='mt-1 py-4 px-4 flex items-center gap-3 font-semibold hover:bg-gray-200 rounded-full p-3'><span className='text-2xl'><FaRegUser /></span><p className='text-lg'>Profil</p></li></NavLink>
                         <NavLink to="*"><li className='mt-1 py-4 px-4 flex items-center gap-3 font-semibold hover:bg-gray-200 rounded-full p-3'><span className='text-2xl'><CgMoreO /></span><p className='text-lg'>Daha fazla</p></li></NavLink>
-                        <li className='cursor-alias font-semibold py-4 px-4 mt-4 flex items-center gap-3 text-white rounded-full p-3 bg-blue-500'><span className='text-2xl'><RiQuillPenLine /></span>Tweetle</li>
+                        <li onClick={focusInput} className='cursor-alias font-semibold py-4 px-4 mt-4 flex items-center gap-3 text-white rounded-full p-3 bg-blue-500'><span className='text-2xl'><RiQuillPenLine /></span>Tweetle</li>
                     </ul>
                 </nav>
             </div>
