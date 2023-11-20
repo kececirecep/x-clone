@@ -14,8 +14,7 @@ import { CgLoadbarDoc, CgMoreO } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa6";
 import { RiQuillPenLine } from "react-icons/ri";
 import { GiExitDoor } from "react-icons/gi";
-
-import Profile from '../images/profile.jpg'
+ 
 
 const Menu = () => {
 
@@ -54,7 +53,7 @@ const Menu = () => {
             </div>
             <div className='flex gap-12 items-center p-3 pl-2 rounded-full hover:bg-gray-100 cursor-pointer'>
                 <NavLink className="flex items-center gap-4">
-                    <img src={user?.photo} width="50px" height="50px" className='rounded-full' alt="" /> 
+                    <img src={user?.photoURL} width="50px" height="50px" className='rounded-full' alt="" /> 
                     <h2>{user?.displayName}</h2>  
                 </NavLink>
                 <span className='text-3xl' onClick={handleLogout}><GiExitDoor /></span>

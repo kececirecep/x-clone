@@ -25,11 +25,15 @@ const SendTweet = () => {
     setBody("")
   }, [body])
 
+  if (!user) {
+    return <div>Yükleniyor...</div>;
+  }
+
   return (
     <div>
       <div onSubmit={handleSubmit} className="p-4 border-b border-gray-200">
         <form className="flex">
-          <img className="w-12 h-12 rounded-full mr-4" src={user?.photo} alt="Profil Resmi" />
+          <img className="w-12 h-12 rounded-full mr-4" src={user?.photoURL} alt="Profil Resmi" />
           <div className="w-full">
             <textarea
               className="w-full h-24 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
